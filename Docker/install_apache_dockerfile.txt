@@ -31,8 +31,21 @@ CMD /usr/local/tomcat/bin/catalina.sh run
 
 
 
-	  
+JENKINS JOB	  
+cat /ect/passwd
+cat /etc/group
+
+usradd
+passwd admin
+
+usermod -aG dcoker dockeradmin
+
+vim /etc/ssh/sshd_config
+service sshd reload 
+ls -ld
 
 
+webaps/targets/*.webapps
 
-
+changing the owner ship
+chown -R dockeradmin:dockeradmin /opt/docker
