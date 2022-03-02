@@ -14,11 +14,11 @@ pipeline{
 				sh "mvn clean install"
 			}
 		}
-	    stage("Deploy artifact on docker-M/C"){
+	    stage("Build Code"){
 			steps{
-			    sshagent(['war-deploy']){
-				sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/Jenkins-docker-war-file-deploy/webapp/target/webapp.war ec2-user@3.94.54.184:/opt"
-			    }
+				sshagent(['Docker_Hub_Pwd01']){
+				sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/pipelin-integrate/webapp/target/webapp.war admin@34.203.205.213:/home/admin"
+			}
 	    }
 	}
 }
