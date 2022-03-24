@@ -33,6 +33,13 @@ Enable connection between Docker-host and Jenkins
  
 ### Steps to create "Deploy_on_Container" Jenkin job
 #### From Jenkins home page select "New Item"
+
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -q)
+cd /opt; 
+docker build -t simple-devops-image .;  
+docker run -d --name simple-devops-container -p 80:8080 simple-devops-image;
    - Enter an item name: `Deploy_on_Container`
      - Copy from: `Deploy_on_Docker_Host`
      
